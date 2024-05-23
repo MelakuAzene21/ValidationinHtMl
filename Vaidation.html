@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+</head>
+<body onload="document.forms.myForm.Name.focus()">
+   <form action="#" name="myForm" >
+  <table  cellspacing="0" cellpadding="5" border="2" width="80%">
+    <tr>
+        <td align="right">Name</td>
+        <td><input type="text" name="Name"></td>
+    </tr>
+  <tr>
+    <td align="right">Email</td>
+    <td><input type="email" name="Email"></td>
+  </tr>
+
+  <tr>
+    <td align="right">Country</td>
+    <td><select name="select" >
+        <option value="-1" selected>[choose yours]</option>
+        <option value="1">Ethiopia</option>
+        <option value="2">Kenya</option>
+        <option value="3">Eritira</option>
+        <option value="4">Sudan</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td align="right"></td>
+    <td><input type="submit" value="Submit" onclick="Validate()"></td>
+  </tr>
+  </table>
+</form> 
+<script>
+    function Validate(){
+        if (document.myForm.Name.value == "") {
+            alert("Please Write your Name")
+            document.myForm.Name.focus();
+            return false;
+        }
+        else if (document.myForm.Email.value == "") {
+            alert("PLease Write your Email");
+            document.myForm.Email.focus();
+            return false;
+        }
+        else if (document.myForm.select.value == -1) {
+            alert("Please Enter your Country");
+            document.nodeType.select.focus();
+            return false;
+
+        } else {
+            return true;
+        }
+// Email Validation
+var emailId=document.myForm.Email.value;
+var atPos=emailId.indexOf("@");
+var dotpos=emailId.lastIndexOf(".");
+if(atPos<1||dotpos-atPos<2){
+    alert("Please Enter a Correct Email Address");
+    document.myForm.Email.focus();
+    return false;
+}
+return true;
+
+var pattern="^([a-zA-Z0-9]+@[a-zA-Z0-9]+.([a-zA-Z] {2,3})$";
+var inputvalue=document.myForm.Email.value;
+var reg=new RegExp(pattern);
+if(reg.test(inputvalue)){
+    alert("Correct Email");
+}else{
+    alert("ReTry again");
+}
+    }
+</script>
+</body>
+</html>
